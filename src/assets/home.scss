@@ -1,6 +1,4 @@
-$main-yellow: #fdc578;
-$main-dark-purple: #202336;
-
+@import 'variables';
 
 .main-container{
     width: 100%;
@@ -9,9 +7,6 @@ $main-dark-purple: #202336;
         max-width: 1200px;
         margin: auto;
         padding: 0px 20px;
-    }
-    .yl{
-        color: $main-yellow;
     }
     .sm-head{
         font-size: 13px;
@@ -24,12 +19,7 @@ $main-dark-purple: #202336;
         font-family: 'Playfair Display';
         margin-top: 8px;
         margin-bottom: 20px;
-    }
-    .m-text{
-        font-size: 17px;
-        line-height: 31px;
-        font-weight: 400;
-        word-spacing: 1.5px;
+        font-weight: 600;
     }
     .m-btn{
         border: 1px solid $main-yellow;
@@ -43,79 +33,6 @@ $main-dark-purple: #202336;
         &:hover{
             color: #313552 !important;
             background: $main-yellow;
-        }
-    }
-    .fixed-nav{
-        height: 70px;
-        position: absolute;
-        width: 100%;
-        z-index: 4;
-        transition: all 0.2s ease-in-out;
-        will-change: position, opacity, background, height;
-        .fix-inner{
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: auto;
-            padding-left: 20px;
-        }
-        &.isInvis{
-            opacity: 0;
-        }
-        .logo{
-            font-size: 17px;
-        }
-        .nav-right{
-            height: 100%;
-            display: flex;
-            align-items: center;
-            line-height: 70px;
-            text-transform: uppercase;
-            font-size: 13px;
-            font-weight: 500;
-            margin-left: auto;
-            span{
-                height: 100%;
-                padding: 0px 20px;
-                position: relative;
-                cursor: pointer;
-                &:before,
-                &:after {
-                    content: "";
-                    position: absolute;
-                    bottom: 15px;
-                    width: 0px;
-                    height: 2px;
-                    margin: 5px 0 0;
-                    transition: all 0.2s ease-in-out;
-                    transition-duration: 0.25s;
-                    opacity: 0;
-                    left: 46%;
-                    background-color: $main-yellow;
-                }
-                &:hover {
-                    &:before,
-                    &:after {
-                        width: 10%;
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-        &.isFixed{
-            opacity: 1;
-            position: fixed;
-            background: #1f2235;
-            height: 50px;
-            box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 30px 0px;
-            .nav-right{
-                line-height: 50px;
-                span{
-                    &:before, &:after{
-                        bottom: 0px;
-                    }
-                }
-            }
         }
     }
     .bg-container{
@@ -190,6 +107,7 @@ $main-dark-purple: #202336;
                             font-size: 22px;
                             margin-top: -5px;
                             font-family: 'Playfair Display';
+                            font-weight: 600;
                         }
                         .b{
                             font-size: 13px;
@@ -258,7 +176,6 @@ $main-dark-purple: #202336;
                     height: 280px;
                     width: 100%;
                     border-radius: 6px;
-                    background-image: url('http://i.4cdn.org/wg/1580645553222.jpg');
                     background-size: cover;
                     background-position: center;
                 }
@@ -274,6 +191,7 @@ $main-dark-purple: #202336;
                         font-size: 22px;
                         font-family: 'Playfair Display';
                         margin: 10px 0px;
+                        font-weight: 600;
                     }
                     .c-desc{
                         font-size: 12px;
@@ -466,21 +384,6 @@ $main-dark-purple: #202336;
     .main-container{
         .sm-lg-head{
             margin-bottom: 26px;
-        }
-        .fixed-nav{
-            .logo{
-                font-size: 14px;
-            }
-            .fix-inner{
-                .nav-right{
-                    font-size: 11px;
-                    padding-right: 9px;
-                    padding-top: 1.5px;
-                    span{
-                        padding: 0px 9px;
-                    }
-                }
-            }
         }
         .first-container{
             .fit{

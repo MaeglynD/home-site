@@ -6,7 +6,9 @@
     </div>
     <div :class="{'fixed-nav': true, isFixed: sp > (wh - 90), isInvis: sp > 70}">
       <div class="fix-inner">
-        <span class="logo">maeglyn<span class="yl">.com</span></span>
+		<router-link to="/">
+			<span class="logo">maeglyn<span class="yl">.com</span></span>
+		</router-link>
         <div class="nav-right">
           <span v-scroll-to="'.second-container'">about</span>
           <span v-scroll-to="'.third-container'">work</span>
@@ -76,22 +78,25 @@
           <div class="sm-lg-head">Projects</div>
         </div>
         <div class="card-container">
-          <carousel-3d :disable3d="ww <= 1024" :space="ww <= 1024 ? 380 : 320"
-           :border="0" :width="408">
-            <slide v-for="(x, i) in projects" :index="i" :key="i">
-              <template slot-scope="{ isCurrent }">
-                <div :class="{ 'card': true, 'current': isCurrent }">
-                  <div class="c-img"></div>
-                  <div class="c-buffer">
-                    <div class="c-tags">{{ x.tags }}</div>
-                    <div class="c-title">{{ x.title }}</div>
-                    <div class="c-desc m-text">{{ x.desc }}</div>
-                    <div class="m-btn">view</div>
-                  </div>
-                </div>
-              </template>
-            </slide>
-          </carousel-3d>
+			<carousel-3d :disable3d="ww <= 1024" :space="ww <= 1024 ? 380 : 320"
+			:border="0" :width="408">
+				<slide v-for="(x, i) in projects" :index="i" :key="i">
+				<template slot-scope="{ isCurrent }">
+					<div :class="{ 'card': true, 'current': isCurrent }">
+						<div class="c-img"
+						:style="{ backgroundImage: `url(${require(`@/assets${x.img}`)})`}"></div>
+						<div class="c-buffer">
+							<div class="c-tags">{{ x.tags }}</div>
+							<div class="c-title">{{ x.title }}</div>
+							<div class="c-desc m-text">{{ x.desc }}</div>
+							<router-link :to="`/projects/${ x.title.replace(/ /g, '-') }`">
+								<div class="m-btn">view</div>
+							</router-link>
+						</div>
+					</div>
+				</template>
+				</slide>
+			</carousel-3d>
         </div>
       </div>
     </div>
@@ -167,69 +172,44 @@
 
 <script>
 import { Carousel3d, Slide } from 'vue-carousel-3d';
+import projects from '../assets/Projects';
 
 export default {
-  name: 'home',
-  components: {
-    Carousel3d,
-    Slide,
-  },
-  data() {
-    return {
-      sp: 0,
-      wh: 10000,
-      ww: 10000,
-      scrollTimeout: null,
-      projects: [
-        {
-          tags: 'graphing, charts, dashboard',
-          title: 'Telematics dashboard',
-          desc: 'Administrator dashboard for telematics software showcasing user‘s formatted selection of data',
-        },
-        {
-          tags: 'graphing, charts, dashboard',
-          title: 'Telematics dashboard',
-          desc: 'Administrator dashboard for telematics software showcasing user‘s formatted selection of data',
-        },
-        {
-          tags: 'graphing, charts, dashboard',
-          title: 'Telematics dashboard',
-          desc: 'Administrator dashboard for telematics software showcasing user‘s formatted selection of data',
-        },
-        {
-          tags: 'graphing, charts, dashboard',
-          title: 'Telematics dashboard',
-          desc: 'Administrator dashboard for telematics software showcasing user‘s formatted selection of data',
-        },
-        {
-          tags: 'graphing, charts, dashboard',
-          title: 'Telematics dashboard',
-          desc: 'Administrator dashboard for telematics software showcasing user‘s formatted selection of data',
-        },
-      ],
-    };
-  },
-  created() {
-    this.handleResize();
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleResize);
-  },
-  methods: {
-    handleScroll() {
-      window.clearTimeout(this.scrollTimeout);
-      this.scrollTimeout = setTimeout(() => {
-        this.sp = window.scrollY;
-      }, 10);
-    },
-    handleResize() {
-      this.wh = window.innerHeight;
-      this.ww = window.innerWidth;
-    },
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
-  },
+	name: 'home',
+	components: {
+		Carousel3d,
+		Slide,
+	},
+	data() {
+		return {
+			sp: 0,
+			wh: 10000,
+			ww: 10000,
+			scrollTimeout: null,
+			projects,
+		};
+	},
+	created() {
+		this.handleResize();
+		window.addEventListener('scroll', this.handleScroll);
+		window.addEventListener('resize', this.handleResize);
+	},
+	methods: {
+		handleScroll() {
+			window.clearTimeout(this.scrollTimeout);
+			this.scrollTimeout = setTimeout(() => {
+				this.sp = window.scrollY;
+			}, 10);
+		},
+		handleResize() {
+			this.wh = window.innerHeight;
+			this.ww = window.innerWidth;
+		},
+	},
+	destroyed() {
+		window.removeEventListener('scroll', this.handleScroll);
+		window.removeEventListener('resize', this.handleResize);
+	},
 };
 </script>
 

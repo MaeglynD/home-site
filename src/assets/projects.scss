@@ -1,0 +1,85 @@
+@import 'variables';
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    padding: 0px 20px;
+    margin: auto;
+	color: #e2e2e2;
+	padding-bottom: 100px;
+	position: relative;
+    .inner{
+        width: 100%;
+    }
+    .fixed-nav{
+        position: unset;
+        margin-bottom: 60px;
+        .fix-inner{
+			padding-left: 0;
+			.nav-right{
+				a > span{
+					display: block;
+					padding: 0;
+				}
+			}
+        }
+    }
+    img{
+		width: 100%;
+		margin-top: 20px;
+	}
+	video{
+		width: 100%;
+		margin-top: 20px;
+		outline: none !important;
+	}
+    .p-date{
+        text-transform: uppercase;
+        font-size: 10px;
+        color: $main-yellow;
+		margin-bottom: 10px;
+		span{
+			// The geniuses that made this font
+			// Sized numbers to fit non-capitals
+			font-size: 12px;
+		}
+    }
+    .p-title{
+        font-size: 28px;
+        font-family: 'Playfair Display';
+        margin-bottom: 16px;
+    }
+    .m-text{
+		font-size: 15px;
+		a, a:visited{
+			color: inherit;
+		}
+	}
+	.linebreak{
+		margin: 13px;
+	}
+	.abs-container{
+		position: absolute;
+		width: calc(100% - 40px);
+		.p-date{
+			margin-bottom: 7px;
+		}
+		a, a:visited{
+			text-decoration: none;
+			color: inherit;
+		}
+		& > div{
+			border-bottom: 1px solid rgb(31, 31, 31);
+			margin-bottom: 30px;
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px){
+	.main-container{
+		.m-text{
+			font-size: 13px;
+		}
+	}
+}
