@@ -28,12 +28,10 @@
       <div class="fit">
         <div class="sm-head">about</div>
         <div class="sm-lg-head">Who am i?</div>
-        <div class="m-text">I‘m a 20 yr old software dev based in the UK, commercially
+        <div class="m-text">I‘m a software dev based in the UK, commercially
             I‘m versed in writing software natively and in browser, both front and backend.
-            I‘ve worked with large-scale live and historical data as well as created highly
-            customizable analytics tools for users to view their data. Design is a side
-            hobby of mine, customer-facing or not I take pride in making things look good
-            (without expense to usablitiy).
+            I work with large-scale live and historical data as well as create
+            customizable analytics tools for users to view their data. I do design too.
         </div>
         <div class="flex-specs">
           <div class="f-container">
@@ -43,29 +41,21 @@
               <div class="b">Design and frontend tech</div>
             </div>
             <ul>
-              <li>• HTML</li>
-              <li>• CSS / SASS / SCSS</li>
-              <li>• Javascript (ES6+)</li>
-              <li>• VueJS / Vuex / React</li>
-              <li>• Vuetify</li>
-              <li>• Flutter</li>
-              <li>• Adobe (Ps / Ai / Pr)</li>
+              <li v-for="(x, i) in frontend" :key="i">
+				• {{ x }}
+              </li>
             </ul>
           </div>
           <div class="f-container">
             <img src="../assets/cube.png" alt="cube">
             <div class="top-row-container">
               <div class="a">Backend & General</div>
-              <div class="b">MVC and application tech</div>
+              <div class="b">Application tech</div>
             </div>
             <ul>
-              <li>• C# (.NET Core)</li>
-              <li>• Python</li>
-              <li>• Javascript (NodeJS, Websockets)</li>
-              <li>• Typescript</li>
-              <li>• SQL (MySQL, MySQLjs)</li>
-              <li>• Git</li>
-              <li>• MVC Integration (Flask, .NET Core, Node)</li>
+              <li v-for="(x, i) in backend" :key="i">
+				• {{ x }}
+              </li>
             </ul>
           </div>
         </div>
@@ -78,8 +68,9 @@
           <div class="sm-lg-head">Projects</div>
         </div>
         <div class="card-container">
-			<carousel-3d :disable3d="ww <= 1024" :space="ww <= 1024 ? 380 : 320"
-			:border="0" :width="408">
+			<!-- For 3D enabled on desktop and disabled on smaller devices
+				:disable3d="ww <= 1024" :space="ww <= 1024 ? 380 : 320" -->
+			<carousel-3d disable3d :space="ww <= 1400 ? 380 : 421" :border="0" :width="408">
 				<slide v-for="(x, i) in projects" :index="i" :key="i">
 				<template slot-scope="{ isCurrent }">
 					<div :class="{ 'card': true, 'current': isCurrent }">
@@ -163,8 +154,9 @@
         <a href="https://edabit.com/user/KZpjBTFm49P6nburM" target="_blank">Edabit</a>
         <a href="https://github.com/MaeglynD" target="_blank">Github</a>
       </div>
-      <div class="abs-footer">No rights reserved, if you wanna copy the code
-        for this website go ahead github.com/maeglynD/maeglynD.github.io. Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+      <div class="abs-footer">
+		Feel free to copy the code for this website, https://github.com/MaeglynD/home-site. I really dont care.
+		Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
       </div>
     </div>
   </div>
@@ -173,6 +165,7 @@
 <script>
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 import projects from '../assets/Projects';
+import misc from '../assets/Misc';
 
 export default {
 	name: 'home',
@@ -182,11 +175,12 @@ export default {
 	},
 	data() {
 		return {
+			...misc,
+			projects,
 			sp: 0,
 			wh: 10000,
 			ww: 10000,
 			scrollTimeout: null,
-			projects,
 		};
 	},
 	created() {

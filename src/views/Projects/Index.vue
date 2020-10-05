@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-project-container">
     <div class="fixed-nav">
       <div class="fix-inner">
         <router-link to="/">
@@ -35,7 +35,7 @@ import projects from '../../assets/Projects';
 export default {
 	data() {
 		return {
-			projects: projects.sort((a, b) => b.date.localeCompare(a.date)),
+			projects: projects.sort((a, b) => Date.parse(a) - Date.parse(b)),
 		};
 	},
 };
