@@ -1,0 +1,161 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+  font-family: "Raleway", "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI";
+}
+
+.v-application{
+  line-height: unset !important;
+  background: unset !important;
+  color: unset !important;
+}
+
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.component-fade-enter, .component-fade-leave-to {
+  opacity: 0;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.05em;
+  user-select: none;
+  -moz-user-select: none;
+  background: #121212;
+  color: white;
+
+  .yl {
+    color: $main-yellow;
+  }
+
+  .m-text {
+    font-size: 17px;
+    line-height: 31px;
+    font-weight: 400;
+    word-spacing: 1.5px;
+  }
+
+  .fixed-nav {
+    height: 70px;
+    position: absolute;
+    width: 100%;
+    z-index: 4;
+    transition: all 0.2s ease-in-out;
+    will-change: position, opacity, background, height;
+
+    .fix-inner {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding-left: 20px;
+
+      a, a:visited {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    &.isInvis {
+      opacity: 0;
+    }
+
+    .logo {
+      font-size: 17px;
+    }
+
+    .nav-right {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      line-height: 70px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      margin-left: auto;
+
+      span {
+        height: 100%;
+        padding: 0px 20px;
+        position: relative;
+        cursor: pointer;
+
+        &:before, &:after {
+          content: "";
+          position: absolute;
+          bottom: 15px;
+          width: 0px;
+          height: 2px;
+          margin: 5px 0 0;
+          transition: all 0.2s ease-in-out;
+          transition-duration: 0.25s;
+          opacity: 0;
+          left: 46%;
+          background-color: $main-yellow;
+        }
+
+        &:hover {
+          &:before, &:after {
+            width: 10%;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &.isFixed {
+      opacity: 1;
+      position: fixed;
+      background: #1f2235;
+      height: 50px;
+      box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 30px 0px;
+
+      .nav-right {
+        line-height: 50px;
+
+        span {
+          &:before, &:after {
+            bottom: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .main-container {
+    .fixed-nav {
+      .logo {
+        font-size: 14px;
+      }
+
+      .fix-inner {
+        .nav-right {
+          font-size: 11px;
+          padding-right: 9px;
+          padding-top: 1.5px;
+
+          span {
+            padding: 0px 9px;
+          }
+        }
+      }
+    }
+  }
+}
