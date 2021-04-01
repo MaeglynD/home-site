@@ -9,7 +9,7 @@ const projects = [
   {
     date: 'March 2020',
     tags: 'react, mobile, appdev',
-    title: 'RN app',
+    title: 'Managerial app',
     img: '/rn-app/a.png',
     desc: 'Rreact native app used for managing groundworkers',
   },

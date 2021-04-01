@@ -4,7 +4,7 @@
       March <span>2020</span>
     </div>
     <div class="p-title">
-      React native app
+      Managerial app
     </div>
     <div class="m-text">
       A contracted react native app used for managing groundworkers.
